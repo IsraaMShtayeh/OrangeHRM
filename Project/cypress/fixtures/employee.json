@@ -1,0 +1,28 @@
+{
+    "employees":[
+       {
+        "firstName":"Saraa",
+        "lastName": "Saed",
+        "username":"Sarau",
+        "password":"zaqzaq1233",
+        "salary":"5000"
+       },
+       {
+        "firstName":"Amall",
+        "lastName": "SAEDD",
+        "username":"Amalu",
+        "password":"zaqzaq1233",
+        "salary":"4000"
+       },
+       {
+        "firstName":"Mariam",
+        "lastName": "SAEED",
+        "username":"Mariamu",
+        "password":"zaqzaq1233",
+        "salary":"3000"
+       }
+    ]
+    
+  
+   
+}
