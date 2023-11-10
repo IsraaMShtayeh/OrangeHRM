@@ -7,9 +7,9 @@ import { Employee } from "../support/pageobjects/Employee";
 
 
 let empNumber: string;
-let eventName = "EVENTAB";
+let eventName = "EventART";
 let eventId: string;
-let expenseName = "EXPENSEAB";
+let expenseName = "ExpenseART";
 let expenseId: string;
 let amount = "5";
 describe("", () => {
@@ -81,5 +81,5 @@ describe("", () => {
         Employee.deleteEmployee(empNumber)
     })
 
-   
+
 })

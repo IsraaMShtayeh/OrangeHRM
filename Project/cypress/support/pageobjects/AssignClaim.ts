@@ -24,14 +24,17 @@ export class AssignClaim {
         if (status === "Paid") {
             this.elements.approveBtn().click({ force: true })
         } else {
+            cy.wait(3000)
             this.elements.rejectBtn().click({ force: true })
         }
 
         return this.elements.loadingSpinner().should("exist").then(() => {
             this.elements.loadingSpinner().should("not.exist").then(() => {
                 this.elements.backBtn().click({ force: true })
+                 cy.wait(5000)
                 this.elements.employeeName().type(firstName)
-                this.elements.dropDown().contains(firstName + " " + lastName).click({ force: true })
+                cy.wait(5000)
+                this.elements.dropDown().contains(firstName + " " + lastName,{timeout:40000}).click({ force: true })
                 this.elements.searchBtn().click({ force: true })
                 this.elements.amount().contains(amount+".00")
                 this.elements.date().contains(this.today)
