@@ -16,7 +16,7 @@
     "allure:clear": "npm run clear:allure && npm run clear:cypress",
     "clear:allure": "rimraf allure-results allure-results-aggregated-files allure-report",
     "clear:cypress": "rimraf cypress/screenshots cypress/videos",
-    "cypress": "npx cypress run --browser chrome --spec cypress/e2e/claim.spec.cy.ts --env allure=true && npm run allure:report",
+    "cypress": "npx cypress run --browser chrome --spec cypress/e2e/employee_report.spec.cy.ts --env allure=true && npm run allure:report",
     "ul-regression-allure": "npx cypress run --browser electron --spec cypress/e2e/employee_report.spec.cy.ts --env allure=true && npm run allure:report",
     "aya": "npx cypress run --browser chrome --spec cypress/e2e/employee_report.spec.cy.ts--env allure=true && npm run allure:report"
   },
