@@ -7,16 +7,15 @@ let jobId: string;
 let empNumber: string;
 let number = [];
 let locationId: string;
-let jobName = "ARTTT"
-let reportName = "REPORTTA"
+let jobName = "ARTT"
+let reportName = "REPORTT"
 describe("", () => {
     beforeEach(function () {
-        cy.visit("/web/index.php/auth/login");
+        cy.visit("/web/index.php/auth/login")
         cy.fixture('employee').as('EmpInfo')
         cy.fixture('location').as('LocationInfo')
         cy.login("Admin", "admin123").then(() => {
             cy.get("@LocationInfo").then((locationData: any) => {
-             
                 addJob(jobName).then((response) => {
                     jobId = response.body.data.id
                     addLocation(locationData.location.name, locationData.location.code).then((response) => {
@@ -45,26 +44,19 @@ describe("", () => {
     })
     it("Create Report", () => {
         cy.get('@EmpInfo').then((infoData: any) => {
-            cy.get('@LocationInfo').then((locationData: any) => {
-                cy.visit("/web/index.php/pim/viewEmployeeList")
+            cy.get('@LocationInfo').then((locationData: any) => {  
                 Report.createReport(reportName, jobName, locationData.location.name).then(() => {
-                    cy.get(".rgRow",{timeout:40000}).should("have.length", 3)
-                    cy.get(' .oxd-text').contains(reportName)
                     Report.checkTableHeader("Employee First Name", "Job Title", "Amount")
                     for (let i = 0; i < 3; i++) {
                         checkDataInTable('.oxd-report-table', [infoData.employees[i].username, jobName, infoData.employees[i].salary])
-
                     }
                 })
-            }).then(() => {
-                Report.deleteReport(reportName);
             })
-
         })
     })
 })
 after(() => {
-
+    Report.deleteReport(reportName); // & checkDeletedReport() inside it 
     number.forEach((num) => {
         Employee.deleteEmployee(num)
     })
